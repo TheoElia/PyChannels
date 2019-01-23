@@ -1,0 +1,219 @@
+<html>
+<head>
+{% load static %}
+       <!--Responsive Meta Tag-->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PywE|Lessons</title>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--Import jQuery Library-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!--Import materialize.js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Charmonman" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Charmonman:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Sacramento|Tangerine" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="/static/images/app_icon.png">
+    <style>
+        body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+main {
+    flex: 1 0 auto;
+
+    @-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 }
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom {
+  from{ bottom:-100px; opacity:0 }
+  to{ bottom:0; opacity:1 }
+}
+
+    </style>
+</head>
+
+<header>
+
+<nav class="nav-extended amber" id="top">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo"><img src="/static/images/app_icon.png" width="250" height="60"></a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons blue-text">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/"><i class="material-icons">home</i></a></li>
+        <li><a href="/lessons"><i class="material-icons">book</i></a></li>
+        <li><a href="/#apps"><i class="material-icons">apps</i></a></li>
+         {% if user.is_authenticated %}
+        <li><a href="/admin"><i class="material-icons">account_circle</i></a></li>
+        {% else %}
+         <li><a href="{% url 'login' %}"><i class="material-icons">account_circle</i></a></li>
+        {% endif %}
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+       <li><div class="user-view">
+      <div class="background">
+        <img src="/static/lessons/uploads/Paper_Architecture_by_Dmitri_Popov.jpg" height="200px">
+      </div>
+      {% if user.is_authenticated %}
+      {% if user.user_img %}
+      <a href="#user"><img class="circle" src="{{user.user_img.url}}"></a>
+      {% else %}
+      <a href="#user"><img class="circle" src="/static/images/app_icon.png"></a>
+      {% endif %}
+      <a href="#name"><span class="white-text name">{{user}}</span></a>
+      <a href="#email"><span class="white-text email">{{user.email}}</span></a>
+      <a href="{% url 'logout' %}"><span class="white-text email">logout</span></a>
+      {% else %}
+      <a href="#user"><img class="circle" src="/static/images/app_icon.png"></a>
+      <a href="#name"><span class="white-text name">Pywe Guest</span></a>
+      <a href="#email"><span class="white-text email">Guest</span></a>
+       <a href="{% url 'login' %}"><span class="white-text email">login</span></a>
+      {% endif %}
+    </div></li>
+        <li><a href="/"><i class="material-icons">home</i>Home</a></li>
+        <li><a href="/lessons"><i class="material-icons">book</i>Lesson</a></li>
+        <li><div class="divider"></div></li>
+        <li><a href="/#apps"><i class="material-icons">apps</i>Apps</a></li>
+         {% if user.is_authenticated %}
+        <li><a href="/admin"><i class="material-icons">account_circle</i>Account</a></li>
+        {% endif %}
+      </ul>
+    </div>
+</nav>
+
+</header>
+<body>
+<div class="container animate-bottom">
+
+        <h1>Lessons</h1>
+        {% for lesson in lesson_list3 %}
+        <div class="card z-depth-3">
+            <div class="card-image">
+                <img src="{{lesson.lesson_img.url}}" height="350px">
+                <span class="card-title blue-text"><big><b>{{ lesson.title }}</b></big><br/><h6>{{ lesson.date_created|date }} by {{lesson.user}}</h6></span>
+	        </div>
+            <div class="card-content blue white-text">
+                {% autoescape off %}
+                <p>{{ lesson.intro_text }}</p>
+                {% endautoescape %}
+            </div>
+            <div class="card-action">
+                <a href="/lesson/{{lesson.pk}}" target="_blank" class="btn blue">{{lesson.title}}</a>
+            </div>
+            <br/>
+            <div class="divider"></div>
+            <br/>
+            {% endfor %}
+            </div>
+</div>
+
+
+ <div class="container">
+
+    <ul class="pagination">
+        <li class="waves-effect"><a href="/list/2"><i class="material-icons">chevron_left</i></a></li>
+        <li class="waves-effect"><a href="/lessons">1</a></li>
+        <li class="waves-effect"><a href="/list/2">2</a></li>
+        <li class="active"><a href="#">3</a></li>
+        <li class="waves-effect"><a href="/lessons"><i class="material-icons">chevron_right</i></a></li>
+    </ul>
+
+</div>
+
+<footer class="page-footer grey">
+    <div class="row">
+      <div class="col l6 m6 s12">
+        <h5 class="black-text" style="padding:10px;"><u>About Us</u></h5>
+        <p class="grey-text text-lighten-4" style="padding:10px;font-family: 'Tangerine', cursive;font-size:30px;"><b>We teach Python from scratch.</b></p>
+      </div>
+      <div class="col l3 m3 s12" style="padding:10px;">
+        <h5 class="black-text"><u>Front-End Tutorials</u></h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="#!">HTML5</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">CSS3</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Bootstrap 3</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Bootstrap 4</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Material Design</a></li>
+        </ul>
+      </div>
+      <div class="col l3 m3 s12" style="padding:10px;">
+        <h5 class="black-text"><u>Back-End Tutorials</u></h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="#!">Java</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Microsoft .NET</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">PHP/MySQL</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Python</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Ruby on Rails</a></li>
+        </ul>
+      </div>
+    </div>
+<div class="fixed-action-btn vertical">
+    <a class="btn-floating btn-large blue">
+      <i class="material-icons">menu</i>
+    </a>
+    <ul>
+      <li><a class="btn-floating red" href="#"><i class="material-icons">arrow_upward</i></a></li>
+      <li><a class="btn-floating red"><i class="fa fa-google"></i></a></li>
+      <li><a class="btn-floating blue darken-1"><i class="fa fa-facebook"></i></a></li>
+      <li><a class="btn-floating red"> <i class="fa fa-youtube"></i></a></li>
+    </ul>
+</div>
+  <div class="footer-copyright">
+        <div class="col l6 m6 s12" style="padding:10px;font-family: 'Tangerine', cursive;font-size:25px;">&copy; 2018 Copyright <a class="white-text text-lighten-4" href="http://learn.pythonanywhere.com/" target="_blank">PythonwithEllie</a></div>
+        <br/>
+        <div class="col l6 m6 s12" style="padding:10px;font-family: 'Tangerine', cursive;font-size:25px;"><a class="grey-text text-lighten-4 right" href="http://learn.pythonanywhere.com/" target="_blank">Designed By P y w E</a></div>
+  </div>
+</footer>
+<script>
+$('.dropdown-button').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrainWidth: false, // Does not change width of dropdown to that of the activator
+      hover: true, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: true, // Displays dropdown below the button
+      alignment: 'left', // Displays dropdown with edge aligned to the left of button
+      stopPropagation: false // Stops event propagation
+      $('.dropdown-button').dropdown('open');
+      $('.dropdown-button').dropdown('close');
+    }
+);
+</script>
+    <script>
+    $( document ).ready(function(){
+     $(".button-collapse").sideNav();
+     $('.fixed-action-btn').openFAB();
+    $('.fixed-action-btn').closeFAB();
+    $('.fixed-action-btn.toolbar').openToolbar();
+    $('.fixed-action-btn.toolbar').closeToolbar();
+    })
+    </script>
+</body>
+</html>

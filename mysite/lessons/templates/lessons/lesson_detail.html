@@ -1,0 +1,508 @@
+<html>
+<head>
+{% load static %}
+       <!--Responsive Meta Tag-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PywE|{{object.title}}</title>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--Import jQuery Library-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!--Import materialize.js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Charmonman" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Charmonman:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dancing+Script|Sacramento|Tangerine" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="image/png" href="/static/images/app_icon.png">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/css/night-mode.css">
+
+        <style>
+body{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+  #lesson-box{
+      text-align:center;
+  }
+
+main {
+    flex: 1 0 auto;
+  }
+    h5{color:#78adc9;}
+    h4{
+        text-align:center;
+    }
+    h6{color:#fff;}
+    code{color:steelblue;
+    overflow:auto;
+    }
+    pre{
+        padding:10px;
+        font-size:110%;
+        background-color:black;
+        color:white;
+        overflow:auto
+    }
+    a{
+        color:#00e5ffb3;
+    }
+    .center-btn { text-align: center }
+    </style>
+    <style>
+        .sidenav {
+  height: 100%;
+  width: 160px;
+  position: relative;
+  z-index: 1;
+  left: 0;
+  background-color: #fff;
+  overflow-x: hidden;
+  padding-top: 20px;
+  float:right;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  border:solid blue 1px;
+}
+
+.sidenav a:hover {
+  color: blue;
+}
+.sidenav img{
+text-align:center;
+padding:10px;
+width:140px;
+height:135px;
+float:center;
+}
+
+
+.main {
+  margin-right: 160px; /* Same as the width of the sidenav */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 10px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+
+<style>
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+.responsive {
+  width: 100%;
+  height: auto;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.caption {
+  color: #000;
+  font-size: 10px;
+  padding: 8px 12px;
+  position: relative;
+  float:right;
+  bottom: 8px;
+  width: 100%;
+  background-color:white;
+  text-align: center;
+}
+.pricelabel{
+    font-size:10px;
+    color:red;
+    background-color:white;
+    border:solid 1px gray;
+    width:50px;
+}
+.namelabel{
+    color: #000;
+  font-size: 10px;
+  padding: 8px 12px;
+  position: relative;
+  float:right;
+  bottom: 8px;
+  width: 100%;
+  background-color:white;
+  text-align: center;
+}
+.counter{
+
+
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: red;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+    </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $(window).scroll(function(){
+        if($(this).scrollTop() > 100){
+            $('#scroll').fadeIn();
+        }else{
+            $('#scroll').fadeOut();
+        }
+    });
+    $('#scroll').click(function(){
+        $("html, body").animate({ scrollTop: 0 }, 600);
+        return false;
+    });
+});
+</script>
+<style type="text/css">
+/* BackToTop button css */
+#scroll {
+    position:fixed;
+    margin-right:50%;
+    right:10px;
+    bottom:20px;
+    cursor:pointer;
+    width:50px;
+    height:50px;
+    background-color:#3498db;
+    text-indent:-9999px;
+    display:none;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+}
+#scroll span {
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-left:-8px;
+    margin-top:-12px;
+    height:0;
+    width:0;
+    border:8px solid transparent;
+    border-bottom-color:#ffffff
+}
+#scroll:hover {
+    background-color:#e74c3c;
+    opacity:1;
+    filter:"alpha(opacity=100)";
+    -ms-filter:"alpha(opacity=100)";
+}
+</style>
+</head>
+<body onpageshow=carousel();>
+
+
+
+
+    <!-- BackToTop Button -->
+
+<a href="javascript:void(0);" id="scroll" title="Scroll to Top" style="display: none;float:left;">Top<span></span></a>
+
+
+<nav class="nav-extended amber" id="top">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo"><img src="/static/images/app_icon.png" width="250" height="60"></a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons blue-text">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/"><i class="material-icons">home</i></a></li>
+        <li><a href="/lessons"><i class="material-icons">book</i></a></li>
+        <li><a href="/#apps"><i class="material-icons">apps</i></a></li>
+        {% if user.is_authenticated %}
+        <li><a href="/admin"><i class="material-icons">account_circle</i></a></li>
+        {% endif %}
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+       <li><div class="user-view">
+      <div class="background">
+        <img src="/static/lessons/uploads/Paper_Architecture_by_Dmitri_Popov.jpg" height="200px">
+      </div>
+      {% if user.is_authenticated %}
+      {% if user.user_img %}
+      <a href="#user"><img class="circle" src="{{user.user_img.url}}"></a>
+      {% else %}
+      <a href="#user"><img class="circle" src="/static/images/app_icon.png"></a>
+      {% endif %}
+      <a href="#name"><span class="white-text name">{{user}}</span></a>
+      <a href="#email"><span class="white-text email">{{user.email}}</span></a>
+      <a href="{% url 'logout' %}"><span class="white-text email">logout</span></a>
+      {% else %}
+      <a href="#user"><img class="circle" src="/static/images/app_icon.png"></a>
+      <a href="#name"><span class="white-text name">Pywe Guest</span></a>
+      <a href="#email"><span class="white-text email">Guest</span></a>
+       <a href="{% url 'login' %}"><span class="white-text email">login</span></a>
+      {% endif %}
+    </div></li>
+        <li><a href="#!"><i class="material-icons">home</i>Home</a></li>
+        <li><a href="#!"><i class="material-icons">book</i>Lesson</a></li>
+        <li><div class="divider"></div></li>
+        <li><a href="#!"><i class="material-icons">apps</i>Apps</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="#!"><i class="material-icons">account_circle</i>Account</a></li>
+        {% endif %}
+      </ul>
+    </div>
+</nav>
+
+<div class="container">
+    {% for product in products %}
+<div class="mySlides fade">
+        <div class="row center-align">
+     <div class="col s12 m4 l2 red lighten-1"><p>
+    <a href="/products/product/{{product.id}}"><div class="pricelabel">GHS {{product.price}}</div>
+      <img src="{{product.product_img1.url}}" style="width:100%;height:150px;" class="responsive">
+    </a>
+      <div class="counter"></div>
+      <div class="namelabel">{{product.name}}</div>
+      </p>
+    </div>
+     <div class="col s12 m4 l2 blue lighten-1"><p>
+    <a href="/products/product/{{product.id}}"><div class="pricelabel">GHS {{product.price}}</div>
+      <img src="{{product.product_img2.url}}" style="width:100%;height:150px;">
+    </a>
+      <div class="counter"></div>
+      <div class="namelabel">{{product.name}}</div>
+      </p>
+    </div>
+
+     <div class="col s12 m4 l2 green lighten-1"><p>
+    <a href="/products/product/{{product.id}}"><div class="pricelabel">GHS {{product.price}}</div>
+      <img src="{{product.product_img3.url}}" style="width:100%;height:150px;">
+    </a>
+      <div class="counter"></div>
+      <div class="namelabel">{{product.name}}</div>
+      </p>
+    </div>
+    </div>
+</div>
+
+<div class="mySlides fade">
+    <div class="row center-align">
+     <div class="col s12 m4 l2 blue lighten-1"><p>
+    <a href="/products/product/{{product.id}}"><div class="pricelabel">GHS {{product.price}}</div>
+      <img src="{{product.product_img1.url}}" style="width:100%;height:150px;" class="responsive">
+    </a>
+      <div class="counter"></div>
+      <div class="namelabel">{{product.name}}</div>
+      </p>
+    </div>
+    </div>
+</div>
+
+<div class="mySlides fade">
+    <div class="row center-align">
+     <div class="col s12 m4 l2 green lighten-1"><p>
+    <a href="/products/product/{{product.id}}"><div class="pricelabel">GHS {{product.price}}</div>
+      <img src="{{product.product_img2.url}}" style="width:100%;height:150px;">
+    </a>
+      <div class="counter"></div>
+      <div class="namelabel">{{product.name}}</div>
+      </p>
+    </div>
+    </div>
+</div>
+
+<div class="mySlides fade">
+    <div class="row center-align">
+     <div class="col s12 m4 l2 red lighten-1"><p>
+    <a href="/products/product/{{product.id}}"><div class="pricelabel">GHS {{product.price}}</div>
+      <img src="{{product.product_img3.url}}" style="width:100%;height:150px;">
+    </a>
+      <div class="counter"></div>
+      <div class="namelabel">{{product.name}}</div>
+      </p>
+    </div>
+    </div>
+</div>
+     {% endfor %}
+</div>
+
+
+
+<div style="padding:10px;">
+    <div class="card-panel blue white-text" style="font-family: 'Tangerine', cursive;">
+	<h1 class="center-align" style="font-size:70px;"><b>{{ object.title }}</b></h1>
+	</div>
+	<div class="card z-depth-3">
+	<div class="card-image">
+        {% if lesson.lesson_img %}
+          <img src="{{lesson.lesson_img.url}}" width"500" height="300">
+        {% endif %}
+          <span class="card-title black-text"><h6><b>{{ object.date_created|date }} by {{object.user}}</b></h6></span>
+	</div>
+	</div>
+	<div class="divider"></div>
+	<div>
+	    {% autoescape off %}
+	<p>{{ object.body }}</p>
+	    {% endautoescape %}
+	</div>
+	<a href="https://www.onlinegdb.com/online_python_compiler" class="waves-effect waves-light btn">Try it yourself</a>
+</div>
+
+<footer class="page-footer grey">
+    <div class="row">
+      <div class="col l6 m6 s12">
+        <h5 class="black-text" style="padding:10px;"><u>About Us</u></h5>
+        <p class="grey-text text-lighten-4" style="padding:10px;font-family: 'Tangerine', cursive;font-size:30px;"><b>We teach Python from scratch.</b></p>
+      </div>
+      <div class="col l3 m3 s12" style="padding:10px;">
+        <h5 class="black-text"><u>Front-End Tutorials</u></h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="#!">HTML5</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">CSS3</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Bootstrap 3</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Bootstrap 4</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Material Design</a></li>
+        </ul>
+      </div>
+      <div class="col l3 m3 s12" style="padding:10px;">
+        <h5 class="black-text"><u>Back-End Tutorials</u></h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="#!">Java</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Microsoft .NET</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">PHP/MySQL</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Python</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Ruby on Rails</a></li>
+        </ul>
+      </div>
+    </div>
+
+<div class="fixed-action-btn vertical">
+
+    <a class="btn-floating btn-large blue">
+      <i class="material-icons">menu</i>
+    </a>
+    <ul>
+      <li><a class="btn-floating red"><i class="fa fa-google"></i></a></li>
+      <li><a class="btn-floating blue darken-1"><i class="fa fa-facebook"></i></a></li>
+      <li><a class="btn-floating red"> <i class="fa fa-youtube"></i></a></li>
+      <li title="change size"><a href="javascript:;" class="btn-floating red" id="btn1"> <i class="material-icons">camera</i></a></li>
+
+    </ul>
+</div>
+
+
+  <div class="footer-copyright">
+        <div class="col l6 m6 s12" style="padding:10px;font-family: 'Tangerine', cursive;font-size:25px;">&copy; 2018 Copyright <a class="white-text text-lighten-4" href="http://learn.pythonanywhere.com/" target="_blank">PythonwithEllie</a></div>
+        <br/>
+
+        <div class="col l6 m6 s12" style="padding:10px;font-family: 'Tangerine', cursive;font-size:25px;"><a class="grey-text text-lighten-4 right" href="http://learn.pythonanywhere.com/" target="_blank">Designed By P y w E</a></div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/jquery.night.mode.js"></script>
+ <!--Import materialize.js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <script>
+    $( document ).ready(function(){
+    $("body").nightMode({
+    autoEnable: true,
+    brightnessControler: true,
+    keepNormal: "pre,code,nav,.page-footer,#scroll,.fixed-action-btn,.btn-floating",});
+     $(".button-collapse").sideNav();
+     $('.fixed-action-btn').openFAB();
+    $('.fixed-action-btn').closeFAB();
+    $('.fixed-action-btn.toolbar').openToolbar();
+    $('.fixed-action-btn.toolbar').closeToolbar();
+    });
+    $("pre").addClass("card-panel black blue-text");
+    </script>
+
+
+ <script>
+    $(function(){
+    $('#btn1').on('click', function(){
+        if($('p').hasClass('myClass flow-text')){
+        $('p').removeClass('myClass flow-text');
+        $('ul').removeClass('myClass flow-text');}
+        else{
+            $('p').addClass('myClass flow-text');
+            $('ul').addClass('myClass flow-text');
+        }
+    });
+});
+</script>
+<script>
+var myIndex = 0;
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    var c = document.getElementsByClassName("counter");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    for (i = 0; i < c.length; i++){
+     c[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    c[myIndex-1].style.display = "block";
+    setTimeout(carousel, 5000); // Change image every 5 seconds
+}
+</script>
+
+</body>
+</html>

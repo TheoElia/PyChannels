@@ -1,0 +1,153 @@
+<html>
+<head>
+{% load static %}
+       <!--Responsive Meta Tag-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--Import jQuery Library-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!--Import materialize.js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <!--Import materialize.css-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+<div class="navbar-fixed">
+    <nav>
+   <div class="nav-wrapper purple">
+    <ul class="right">
+        <li><a href="#!"><i class="material-icons">view_module</i></a></li>
+        <li><a href="#!"><i class="material-icons">refresh</i></a></li>
+        <li><a href="#!"><i class="material-icons">more_vert</i></a></li>
+
+    </ul>
+    <!-- Dropdown Trigger -->
+    <a class='dropdown-button btn-flat purple' href='#' data-activates='dropdown1'><i class="material-icons right">menu</i></a>
+    <!-- Dropdown Structure -->
+    <ul id='dropdown1' class='dropdown-content'>
+        {% for lesson in object_list %}
+        <li class="left-align"><a href="#{{lesson.title}}">{{lesson.title}}</a></li>
+        {% endfor %}
+    </ul>
+  </div>
+    </nav>
+</div>
+<script type="text/javascript">
+	 $(".button-collapse").sideNav();
+</script>
+<br/>
+<div class="divider"></div>
+<div class="container">
+<h1>Lessons</h1>
+<div class="row">
+<div class="col s12 m9 l10">
+    {% for product in product_list %}
+    {{product}}
+    {% endfor %}
+
+{% for lesson in object_list %}
+<div id="{{lesson.title}}" class="section scrollspy">
+      <div class="card z-depth-3">
+        <div class="card-image">
+          <img src="{{lesson.product_img1.url}}">
+          <span class="card-title blue-text"><big>{{ lesson.name }}</big><br/><h6>{{ lesson.date_created|date }} by {{lesson.user}}</h6></span>
+	    </div>
+        <div class="card-content blue white-text">
+           {% autoescape off %}
+          <p>{{ lesson.description }}</p>
+            {% endautoescape %}
+        </div>
+        <div class="card-action">
+          <a href="product/{{lesson.pk}}" target="_blank" class="btn blue">{{lesson.name}}</a>
+        </div>
+      </div>
+    </div>
+<br/>
+<div class="divider"></div>
+<br/>
+{% empty %}
+    <div class="card-panel orange white-text">No Lessons have been added yet.</div>
+{% endfor %}
+</div>
+<div class="col hide-on-small-only m3 l2">
+      <ul class="section table-of-contents right-align" style="padding-top:150px; position:fixed;">
+          {% for lesson in object_list %}
+        <li class="left-align"><a href="#{{lesson.title}}">{{lesson.title}}</a></li>
+          {% endfor %}
+      </ul>
+</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+	  $('.scrollspy').scrollSpy();
+	});
+</script>
+
+<div>
+<ul class="pagination">
+        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+        <li class="active"><a href="#!">1</a></li>
+        <li class="waves-effect"><a href="#!">2</a></li>
+        <li class="waves-effect"><a href="#!">3</a></li>
+        <li class="waves-effect"><a href="#!">4</a></li>
+        <li class="waves-effect"><a href="#!">5</a></li>
+        <li class="waves-effect"><a href="#!">6</a></li>
+        <li class="waves-effect"><a href="#!">7</a></li>
+        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+    </ul>
+</div>
+</div>
+<footer class="page-footer" style="background-color:black;">
+    <div class="row">
+      <div class="col l3 m3 s12">
+        <h5 class="white-text">About Us</h5>
+        <p class="grey-text text-lighten-4">We Teach Python From Scratch </p>
+      </div>
+      <div class="col l3 m3 s12">
+        <h6 class="white-text">Front-End Tutorials</h6>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="#!">HTML5</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">CSS3</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Bootstrap 3</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Bootstrap 4</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Material Design</a></li>
+        </ul>
+      </div>
+      <div class="col l3 m3 s12">
+        <h6 class="white-text">Back-End Tutorials</h6>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="#!">Java</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Microsoft .NET</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">PHP/MySQL</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Python</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Ruby on Rails</a></li>
+        </ul>
+      </div>
+
+
+<div class="fixed-action-btn horizontal click-to-toggle">
+    <a class="btn-floating btn-large red">
+      <i class="material-icons">menu</i>
+    </a>
+    <ul>
+      <li><a class="btn-floating red" href="#"><i class="material-icons">arrow_upward</i></a></li>
+      <li><a class="btn-floating red"><i class="fa fa-google"></i></a></li>
+      <li><a class="btn-floating blue darken-1"><i class="fa fa-facebook"></i></a></li>
+      <li><a class="btn-floating red"> <i class="fa fa-youtube"></i></a></li>
+    </ul>
+</div>
+
+    </div>
+  <div class="footer-copyright">
+        <div class="col l6 m6 s12">&copy; 2018 Copyright <a class="white-text text-lighten-4" href="http://learn.pythonanywhere.com/" target="_blank">PywE</a></div>
+
+  </div>
+</footer>
+
+</body>
+
+
+</html>

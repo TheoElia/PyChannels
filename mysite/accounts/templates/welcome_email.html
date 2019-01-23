@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>email</title>
+</head>
+<body style="background-color:white;">
+
+<table border="0" width="100%" style="border-collapse:collapse">
+
+<tr >
+
+    <td bgcolor="dodgerblue"
+        align="center"
+        style="font-size:25px;
+        color:white;
+        padding:40px 40px;
+        border-radius:15px;
+        background-image:linear-gradient(to bottom right,violet,dodgerblue,violet);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        text-align:center;">
+
+        Welcome to PywE!
+
+    </td>
+
+    </tr>
+
+    <tr>
+
+        <td  style="padding : 20px 40px 20px 40px);">
+
+            <table border="0" width="100%" style="border-collapse:collapse">
+                    <tr>
+                        <td >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="padding:40px 60px 40px 60px">
+                            <table border="0"  width="100%" style="border-collapse:collapse">
+                                <tr>
+                                    <td style="padding:10px;
+                                    font-size:25px;">
+                                        Hello <em>{{username}}</em>,<br /><br />
+                                        You are welcome to PywE online learning platform for Python.
+                                        <br /><br />
+                                        We have included both an ApiToken which can be used to make api calls to
+                                        our network and a verification link to verify your email address.
+                                        <br/>
+                                        <br/>
+                                        Here is your api_token: <br/>
+                                        <b>{{api_token}}</b><br/>
+                                        Copy and keep it safe.
+                                        <br/>
+                                        Click <a href="{{verification_link}}">this link</a> to verify your email.
+                                        <br/>
+                                        Read our <a href="learn.pythonanywhere.com/lessons/docs/">Docs</a> to know how to use the ApiToken to make api calls
+                                        <br><br>
+                                        Happy Pythoning -- <strong>PywE.</strong>
+
+                                    </td>
+
+                                </tr>
+                            </table>
+
+                            <br /><br />
+
+                            <table>
+
+                                <tr style="font-size:12px;color:gray;">
+
+                                        <td>
+                                            <hr>
+                                            <p style="width:50%;">
+                                                You are receiving this email because this account
+                                                was used to signup on our <a href="{{home_url}}">platform</a>
+                                                If this is not you, please feel free to <a href="{{unsubscribe_link}}">unsubscribe</a>
+                                                from our services.
+                                            </p>
+                                        </td>
+
+                                        <td>
+                                            <hr>
+                                            <p style="width:50%;">
+                                                PywE Educational Apps.
+                                                P.O.Box V V 24, Valley View Agency, Oyibi - Accra. - http://learn.pythonanywhere.com
+                                                Mobile: +233 20 359 2400
+                                                Mobile: +233 50 045 9013
+                                            </p>
+                                        </td>
+
+                                        <td>
+                                            <hr>
+                                            <p style="width:50%;">We Teach Python From Scratch. Learn. Share.</p>
+                                        </td>
+
+                                </tr>
+
+                            </table>
+
+                        </td>
+
+                    </tr>
+
+                    <tr>
+
+                         <td bgcolor="slateblue" align="center" style="color:darkgray;font-size:10px;">
+
+                            Copyright 2018 <strong style="color:dodgerblue">PywE</strong>
+
+                         </td>
+
+                    </tr>
+
+
+            </table>
+
+        </td>
+
+    </tr>
+
+</table>
+</body>
+</html>
+

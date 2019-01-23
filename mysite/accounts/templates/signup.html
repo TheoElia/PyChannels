@@ -1,0 +1,87 @@
+<html>
+    <head>
+        {% load static %}
+        <link type="text/css" rel="stylesheet" href="{% static 'accounts/css/materialize.min.css' %}" />
+        <link rel="stylesheet" href="{% static 'accounts/css/materialize.css' %}" />
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
+    </head>
+    <body>
+
+<div class="navbar-fixed">
+   <nav>
+       <div class="nav-wrapper">
+        <ul class="tabs z-depth-1 tabs-fixed-width">
+            <li class="tab col"><a href="#signup">Signup</a></li>
+            <li class="tab col"><a href="/accounts/login/">Login</a></li>
+            <li class="tab col"><a class="active" href="/">Homepage</a></li>
+            <li class="tab col"><a href="/#apps">Apps</a></li>
+        </ul>
+        </div>
+</nav>
+</div>
+ <div class="card-panel orange white-text">{{warning}}</div>
+        <h2 class="card-panel blue lighten-1 white-text">Signup For Free</h2>
+        <div class="card-panel blue white-text z-depth-4" id="signup">
+        <form method="post" class="card-panel white blue-text" style="margin:5px;" enctype="multipart/form-data">
+            <div><img src="{% static 'accounts/images/app_icon.png' %}"/></div>
+         {% csrf_token %}
+          <div class="card-panel light-red accent-1 white-text" style="text-align:center;">
+              {{form.non_field_errors}}</div>
+              {% if messages %}
+        <div class="card-panel light-green accent-2 white-text" style="text-align:center;">
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    </div>{% endif %}
+
+    {% for field in form %}
+    <div class="row">
+         <div class="input-field col s6">
+        {{ field.help_text }}
+         </div>
+        <div class="input-field col s12">
+            {% if 'name' in field.label_tag %}
+          <i class="material-icons prefix">account_circle</i>
+          {% endif %}
+          {% if 'username' in field.label_tag %}
+        <div class="input-field col s12" style="color:red;">
+            <div class='error'>{{form.errors.username}}</div>
+        </div>
+            {% endif %}
+
+          {% if 'password' in field.label_tag %}
+          <i class="material-icons prefix">lock</i>
+	    <div class='error'>{{form.errors.password}}</div>
+          {% endif %}
+          {% if 'Phone' in field.label_tag %}
+        <div class="input-field col s12" style="color:red;">
+          <div class='error'>{{form.errors.phone}}</div>
+        </div>
+          <i class="material-icons prefix">phone</i>
+          {% endif %}
+          {% if 'Email' in field.label_tag %}
+        <div class="input-field col s12" style="color:red;">
+          <div class='error'>{{form.errors.email}}</div>
+        </div>
+          <i class="material-icons prefix">mail</i>
+          {% endif %}
+          {{ field }}
+          <label for="icon_prefix "> {{ field.label_tag }}</label>
+        </div>
+        {% endfor %}
+        </div>
+        <button type="submit" class="waves-effect waves btn blue">Sign up</button>
+        </form>
+        </div>
+    </div>
+
+    </body>
+{% load static %}
+		<script src="{% static 'accounts/js/materialize.min.js' %}"></script>
+		<script src="{% static 'accounts/js/materialize.js' %}"></script>
+</html>

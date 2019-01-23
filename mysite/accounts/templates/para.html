@@ -1,0 +1,276 @@
+<html>
+    <head>
+<title>PywE|Home</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--Import jQuery Library-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<!--Import materialize.js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+<!--Import materialize.css-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="https://fonts.googleapis.com/css?family=Charmonman" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Charmonman:400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Dancing+Script|Sacramento|Tangerine" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" type="image/png" href="/static/images/app_icon.png">
+<style>
+    #bg-img{
+        opacity:.8;
+        height:100px;
+    }
+</style>
+{% load auth_extras %}
+{% load static %}
+</head>
+
+<!-- Start Parallax Header -->
+<header>
+  <nav class="nav-extended yellow accent-4" id="top">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo"><img src="/static/images/app_icon.png" width="250" height="55"></a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#"><i class="material-icons">home</i></a></li>
+        <li><a href="/lessons"><i class="material-icons">book</i></a></li>
+        <li><a href="/#apps"><i class="material-icons">apps</i></a></li>
+        <li><a href="/admin"><i class="material-icons">account_circle</i></a></li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+       <li><div class="user-view">
+      <div class="background">
+        <img src="/static/lessons/uploads/Paper_Architecture_by_Dmitri_Popov.jpg" height="200px">
+      </div>
+      {% if user.is_authenticated %}
+      {% if user.user_img %}
+      <a href="#user"><img class="circle" src="{{user.user_img.url}}"></a>
+      {% else %}
+      <a href="#user"><img class="circle" src="/static/images/app_icon.png"></a>
+      {% endif %}
+      <a href="#name"><span class="white-text name">{{user}}</span></a>
+      <a href="#email"><span class="white-text email">{{user.email}}</span></a>
+      <a href="{% url 'logout' %}"><span class="white-text email">logout</span></a>
+      {% else %}
+      <a href="#user"><img class="circle" src="/static/images/app_icon.png"></a>
+      <a href="#name"><span class="white-text name">Pywe Guest</span></a>
+      <a href="#email"><span class="white-text email">Guest</span></a>
+       <a href="{% url 'login' %}"><span class="white-text email">login</span></a>
+      {% endif %}
+    </div></li>
+        <li><a href="#"><i class="material-icons">home</i>Home</a></li>
+        <li><a href="/lessons"><i class="material-icons">book</i>Lesson</a></li>
+        <li><div class="divider"></div></li>
+        <li><a href="/#apps"><i class="material-icons">apps</i>Apps</a></li>
+        <li><a href="/admin"><i class="material-icons">account_circle</i>Account</a></li>
+
+      </ul>
+    </div>
+</nav>
+
+</header>
+<!-- End Parallax Header -->
+<body>
+
+<!-- Start Parallax  -->
+  <div class="parallax-container">
+    <div class="parallax"><img src="/static/images/african.png" class="responsive-img" alt="PywE" id="bg-img" height="100"></div>
+  </div>
+  <div class="section white">
+    <div class="row container">
+      <h2 class="header">PywE</h2>
+      <p class="grey-text text-darken-3 lighten-3">PywE is proudly a Ghanaian online learning platform for programming especially with Python.</p>
+    </div>
+    <div class="row container">
+      <h4 class="light">Who We Are</h4>
+      <p align="justify">
+       We are programming enthusiasts who think everyone needs to learn how to code.
+       Every member on board therefore brings in the same kind of vision and with so much passion
+       wants to help those out there ready to learn. We strive to make our lessons simple,
+       straight-forward and interesting.</p>
+       <h4 class="light">Our Services</h4>
+       <p align="justify">We offer I.T Educaional services especcially in the areas of Pythona and Data Science.</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <!-- begin app section -->
+
+  <div class="row container" id="#apps">
+      <h4 class="light">Our Apps</h4>
+    <div class="row center-align">
+    <div class="col s12 blue white-text" style="padding:10px;font-family: 'Tangerine', cursive;"><p><h3 class="header">Try out some of our great apps today</h4></p></div>
+    </div>
+
+<div class="row center-align">
+    <div class="col s12 m6 l3 amber">
+         <div class="card z-depth-5">
+            <div class="card-image">
+                <img src="/static/images/app_icon.png" height="100px" width="100px">
+                <span class="card-title blue-text" style="padding:10px;font-family: 'Tangerine', cursive;font-size:30px;"><big><b>Learnapi</b></big><br/></span>
+	        </div>
+            <div class="card-content blue white-text">
+
+                <p>An api that allows you to get access to all our lessons with just a single request.</p>
+            </div>
+            <div class="card-action">
+                <a href="app/doc" target="_blank" class="btn blue">Doc</a>
+            </div>
+            <br/>
+
+            </div>
+    </div>
+    <div class="col s12 m6 l3 blue">
+         <div class="card z-depth-5">
+            <div class="card-image">
+                <img src="/static/images/ap_icon.png" height="100px" width="100px">
+                <span class="card-title blue-text" style="padding:10px;font-family: 'Tangerine', cursive;font-size:30px;"><big><b>Pywebaseapi</b></big><br/></span>
+	        </div>
+            <div class="card-content blue white-text">
+
+                <p>Store your files with our firebase api easily with one request.</p>
+            </div>
+            <div class="card-action">
+                <a href="/doc" target="_blank" class="btn blue">Doc</a>
+            </div>
+            <br/>
+
+            </div>
+    </div>
+    <div class="col s12 m6 l3 yellow accent-4">
+         <div class="card z-depth-5">
+            <div class="card-image">
+                <img src="/static/images/ap_icon.png" height="100px" width="100px">
+                <span class="card-title blue-text" style="padding:10px;font-family: 'Tangerine', cursive;font-size:30px;"><big><b>Android app</b></big><br/></span>
+	        </div>
+            <div class="card-content blue white-text">
+
+                <p>Download our android app for offline access to PywE</p>
+            </div>
+            <div class="card-action">
+                <a href="/doc" target="_blank" class="btn blue">Doc</a>
+            </div>
+            <br/>
+
+            </div>
+    </div>
+
+    <div class="col s12 m6 l3 blue">
+        <div class="card z-depth-5">
+            <div class="card-image">
+                <img src="/static/images/app_icon.png" height="100px" width="100px">
+                <span class="card-title blue-text" style="padding:10px;font-family: 'Tangerine', cursive;font-size:30px;"><big><b>Smsapi</b></big></span>
+	        </div>
+            <div class="card-content blue white-text">
+
+                <p>Send bulk sms to as many customers as you need with us with just a single request.</p>
+            </div>
+            <div class="card-action">
+                <a href="doc" target="_blank" class="btn blue">Doc</a>
+            </div>
+            <br/>
+            </div>
+    </div>
+
+</div>
+  </div>
+<!-- End apps section -->
+  <div class="divider"></div>
+<!-- Begin team section -->
+    <div class="row container" id="#team">
+      <h4 class="light">Meet The Team</h4>
+       <div class="row center-align">
+    <div class="col s12 blue white-text" style="padding:10px;font-family: 'Tangerine', cursive;"><p><h3 class="header">The Great Team that put it all together</h4></p></div>
+    </div>
+    {% for member in staff %}
+      <div class="row center-align">
+    <div class="col s12 yellow accent-4">
+         <div class="card-panel grey lighten-5 z-depth-1">
+          <div class="row valign-wrapper">
+            <div class="col s2">
+              <img src="{{member.user_img.url}}" alt="name" class="circle responsive-img"> <!-- notice the "circle" class -->
+            </div>
+            <div class="col s10">
+              <span class="black-text">
+                This is {{member.username}}. He is one of the people that helped in making this app. A python programmer.
+              </span><br/>
+              <a href="#name"><span class="blue-text name">{{member.username}}</span></a>
+              <br/>
+              <a href="#email"><span class="blue-text email">{{member.email}}</span></a>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<div class="divider"></div>
+<!-- End team section -->
+
+  <div class="parallax-container">
+    <div class="parallax"><img src="/static/images/app_icon.png" class="responsive-img" alt="Parallax"></div>
+  </div>
+
+<footer class="page-footer grey">
+    <div class="row">
+      <div class="row center-align">
+        <h5 class="black-text" style="padding:10px;"><u>About Us</u></h5>
+        <p class="grey-text text-lighten-4" style="padding:10px;font-family: 'Tangerine', cursive;font-size:30px;"><b>We teach Python from scratch.</b></p>
+      </div>
+      <div class="row center-align">
+        <h5 class="black-text"><u>Front-End Tutorials</u></h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="#!">HTML5</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">CSS3</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Bootstrap 3</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Bootstrap 4</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Material Design</a></li>
+        </ul>
+      </div>
+      <div class="row center-align">
+        <h5 class="black-text"><u>Back-End Tutorials</u></h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="#!">Java</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Microsoft .NET</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">PHP/MySQL</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Python</a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Ruby on Rails</a></li>
+        </ul>
+      </div>
+    <div class="container">
+    <div class="row center-align">
+    <div class="col s12 m6 l3"><p><a class="btn-floating red"><i class="fa fa-google"></i></a></p></div>
+    <div class="col s12 m6 l3"><p><a class="btn-floating blue darken-1"><i class="fa fa-facebook"></i></a></p></div>
+    <div class="col s12 m6 l3"><p><a class="btn-floating red"> <i class="fa fa-youtube"></i></a></div>
+    <div class="col s12 m6 l3"><p><a class="btn-floating blue"> <i class="fa fa-linkedin"></i></a></p></div>
+    </div>
+    </div>
+</div>
+
+  <div class="footer-copyright">
+        <div class="col l6 m6 s12" style="padding:10px;font-family: 'Tangerine', cursive;font-size:25px;">&copy; 2018 Copyright <a class="white-text text-lighten-4" href="http://learn.pythonanywhere.com/" target="_blank">PythonwithEllie</a></div>
+        <br/>
+
+        <div class="col l6 m6 s12" style="padding:10px;font-family: 'Tangerine', cursive;font-size:25px;"><a class="grey-text text-lighten-4 right" href="http://learn.pythonanywhere.com/" target="_blank">Designed By P y w E</a></div>
+  </div>
+</footer>
+
+
+<!-- Start Parallax Javascript -->
+<script type="text/javascript">
+  $(document).ready(function(){
+      $('.parallax').parallax();
+      $(".button-collapse").sideNav();
+      $('.fixed-action-btn').openFAB();
+    $('.fixed-action-btn').closeFAB();
+    $('.fixed-action-btn.toolbar').openToolbar();
+    $('.fixed-action-btn.toolbar').closeToolbar();
+  });
+</script>
+<!-- EndParallax Javascript -->
+
+<!-- End Parallax  -->
+
+</body>
+</html>

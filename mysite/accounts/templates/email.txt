@@ -1,0 +1,20 @@
+Hello {{username}},
+		PywE has made some major changes to their web application so your older password
+		will not work.
+		We apologize for the inconvenience but we assure you that this was done
+		in your interest - to enhance your data security and also to enhance
+		your experience as you learn Python with us.
+
+		We have included both an ApiToken which can be used to make api calls to
+		our network and also a randomly generated password which we strongly advice you change
+		as soon as you can, because we including it in this email.
+		Use your old username and the new password to login to change your passwor.
+
+		Here is your api_token {{token}}  and
+		Here is your new password {{password}}
+		If you did not verify your email earlier on,
+		Go to this link {{verification_link}} to verify your email.
+
+		Read our Docs at http://learn.pythonanywhere.com/lessons/docs/ to know how to use the ApiToken to make api calls
+
+		Happy Pythoning -- PywE.

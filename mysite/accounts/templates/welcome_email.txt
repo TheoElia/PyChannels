@@ -1,0 +1,15 @@
+Hello {{username}},
+		You are welcome to PywE online learning platform for Python.
+
+		We have included both an ApiToken which can be used to make api calls to
+		our network and a verification link to verify your email address.
+
+		 Here is your api_token:
+		 {{api_token}}
+         Copy and keep it safe.
+
+         Visit {{verification_link}} to verify your email.
+
+		Read our Docs at http://learn.pythonanywhere.com/lessons/docs/ to know how to use the ApiToken to make api calls
+
+		Happy Pythoning -- PywE.

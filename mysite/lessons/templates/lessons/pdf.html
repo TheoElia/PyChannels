@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pywe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.4.1/paper.css">
+    <link href='https://fonts.googleapis.com/css?family=Tangerine:700' rel='stylesheet' type='text/css'>
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Lekton|Montserrat:400,500|Philosopher|Playfair+Display+SC:400,700|Rokkitt|Tangerine|ZCOOL+XiaoWei" rel="stylesheet">
+
+    <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!--Import jQuery Library-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <!--Import materialize.js-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+    <style>
+    body{
+    font-size: 17px;
+  font-family: 'Merriweather', serif;
+  padding:25px;
+  overflow:show;
+}
+.mydiv{
+  position:absolute;
+  color:#fff;
+  top:50%;
+  left:50%;
+  padding:15px;
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+}
+#comment{
+    color:green;
+}
+h5{color:steelblue;font-family: 'Playfair Display SC', serif;}
+    h4,h3{
+        color:steelblue;text-align:center;font-family: 'Playfair Display SC', serif;
+    }
+  #lesson-box{
+      text-align:center;
+  }
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+main {
+    flex: 1 0 auto;
+  }
+
+    h6{color:black;}
+    code{color:orange;
+    overflow:show;
+    }
+    pre{font-family: 'Lekton', sans-serif;
+        padding:20px;
+        font-size:100%;
+        background-color:black;
+        color:blue;
+        overflow:show;
+    }
+
+article{ border: 4px double black; padding: 5mm 10mm; border-radius: 5mm;margin:20px 50px 20px 50px; }
+.box{border: 0px double black; padding: 5mm 10mm; margin:10px 10px 10px 400px;
+        }
+        h1{
+         font-family: 'Tangerine', cursive; font-size: 22pt; line-height: 1mm;
+        }
+        .bordered {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    border: 10px groove yellowgreen;
+  }
+  hr{
+  width:80%;text-align:center;}
+
+  .center {
+  height: 200px;
+  position: relative;
+  border: 3px solid green;
+}
+
+.center p {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+    </style>
+
+</head>
+<body>
+<div class="bordered" style="text-align:center;">
+    <div style="height:1000px;background-image:linear-gradient(to bottom right,rgb(89, 249, 165),rgb(15, 82, 225),rgb(89, 249, 165));">
+        <div class="mydiv">
+        <h2 class="header white-text" style="font-family: 'Merriweather', serif;font-size:50px;">Pywe</h2>
+        <p style="color:white;">By: Theophilus Nutifafa</p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card-panel green">
+    <h2 style="color:white;">{{object.title}}</h2>
+    </div>
+    <p>
+    {% autoescape off %}
+    {{object.body}}
+    {% endautoescape %}
+    </p>
+{% for lesson in lessons %}
+    <div class="card-panel green">
+<h2 style="color:white;">{{lesson.title}}</h2>
+    </div>
+    <p>
+    {% autoescape off %}
+    {{lesson.body}}
+    {% endautoescape %}
+    </p>
+
+{% endfor %}
+</div>
+<script>
+    $("pre").addClass("card-panel black white-text");
+</script>
+</body>
+</html>
